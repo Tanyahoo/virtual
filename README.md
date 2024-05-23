@@ -1,4 +1,4 @@
-H.Dip. in Science (Software Development) 
+H.Dip. in Computer Science (Software Development) 
 
 Software Design & Data Structures 2023 ASSIGNMENT 
 
