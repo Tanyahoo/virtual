@@ -4,54 +4,89 @@ Software Design & Data Structures 2023 ASSIGNMENT
 
 Author: Tanya Costello 
 
-Sentiment Analysis Java API using Virtual Threads
 
 
-This Java API is designed to process a set of tweets using virtual threads and perform sentiment 
-analysis based on a lexicon file. The API determines the overall sentiment of the text file by 
-analyzing the tweets using predefined lexicons. The lexicon contains a set of words and an 
-associated polarity. The API uses the Score and Sum scoring system (SaS), where the 
-value/polarity of the words in the twitter file are calculated by summing up the words scores.
+Sentiment Analysis Java Application using Virtual Threads
+
+This Java application processes a set of tweets using virtual threads and performs sentiment analysis based on a lexicon file. The application determines the overall sentiment of provided tweets (100-twitter-users) by analyzing them against supplied lexicons (files called afinn.txt, mpqa.txt, bingliu.txt). The lexicon contains a set of words and their associated polarity. The application uses the Score and Sum (SaS) scoring system, where the sentiment value of the tweets is calculated by summing up the scores of individual words.
+
+Features
+
+•	Menu-Driven Interface: User-friendly menu to start the analysis process.
+
+•	Processing Tweets: Accepts a file of tweets from various Twitter/X users and computes their overall sentiment.
+
+•	Sentiment Analysis: Utilizes 'user-chosen' lexicon to perform sentiment analysis.
+
+•	Virtual Threads: Uses Java's virtual threads for efficient concurrent processing.
 
 
-To Run:
+Functionality
+
+The application supports multiple lexicons and tweets. Currently, it works with lexicons where the polarity values are single-digit integers, due to logic limitations that will be addressed in future updates.
+
+
+Classes
+
+Runner:
+
+•	Contains the main method to execute the program.
+
+•	Initiates the application by displaying the main menu and initializing the required components to start the text processing.
+
+MainMenu:
+
+• Displays the main menu options to the console and solicits user input, delegates tasks to respective classes/methods for execution
+
+AbstractParser:
+
+•	An abstract class that provides functionality to parse lexicons and populate the appropriate concurrent data structure (i.e., ConcurrentHashMap) for use with virtual threads.
+
+ParserConcrete:
+
+•	Extends AbstractParser and processes Twitter files, populating thread-safe data structures.
+
+Goable:
+
+•	An interface that provides a single abstract method.
+
+
+Getting Started
 
 
 
-• Menu: User is presented with a menu, requested input to begin the analysis process.
+Prerequisites
 
-• Processing Tweets: The API accepts a single file of tweets from various Twitter/X users. 
- Each file is then computed against a lexicon to calculate the overall sentiment.
+•	Java 17 or higher
 
-• Sentiment Analysis: Utilizes a user chosen lexicon to perform sentiment analysis on the 
- tweets.
+•	IDE with support for Java (e.g., Eclipse, IntelliJ IDEA)
 
-• Virtual Threads: The processing of tweets and sentiment analysis is handled using Java's 
- virtual threads for efficient concurrency.
+Running the Application:
+1.	Clone the repository:
+git clone https://github.com/Tanyahoo/virtual.git
 
+2.	Navigate to the project directory:
+cd virtual
 
-Functionality:
-
-
-
-The API supports the use of multiple lexicons and tweets. However, it must be said that the 
-functionality of this API is presently based on the use of lexicons that have a polarity in single 
-digit integers only, due to logic shortcomings (due to be rectified).
+3.	Compile: javac -d bin src/ie/atu/sw/*.java
+	
+4.	Run the application: java -cp ./bin ie.atu.sw.Runner 
+	
 
 
-Classes: 
+Usage:
 
+1.	Start the application. You will be presented with a menu.
+ 
+2.	Input the path to the lexicon(s) you wish to use (choose between the provided files called afinn.txt, mpqa.txt, bingliu.txt)
+	
+3.	Input the path to the file containing tweets (100-twitter-users).
+	
+4.	The application will process the tweets and display the overall sentiment based on the chosen lexicon.
+   
 
+Acknowledgments:
 
-Runner: Contain the main method which acts as an entry point into the application.
-
-MainMenu: Displays the user menu which delegates to each class/method for further execution 
-
-AbstractParser: An abstract class that provides functionality to parse in lexicons and populate the 
-appropriate concurrent data structure for use with virtual threads, i.e., concurrent HashMap.
-
-ParserConcrete: Extends AbstractParser. Processes twitter files, populates thread safe data structure.
-
-Goable: An interface that provides a single abstract method.
+Thank you to my University lecturer JH for providing invaluable help and feedback.
 
 
